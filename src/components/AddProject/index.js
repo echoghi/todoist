@@ -22,7 +22,7 @@ import ColorPicker from './ColorPicker';
 const AddProject = ({ shouldShow = false }) => {
     const [show, setShow] = useState(shouldShow);
     const [projectName, setProjectName] = useState('');
-    const [projectColor, setProjectColor] = useState('Grey');
+    const [projectColor, setProjectColor] = useState('#b8b8b8');
     const projectId = generatePushId();
 
     const { setProjects } = useProjectsValue();
@@ -41,11 +41,17 @@ const AddProject = ({ shouldShow = false }) => {
             .then(() => {
                 setProjects([]);
                 setProjectName('');
+                setProjectColor('#b8b8b8');
                 setShow(false);
             });
 
     const handleProjectName = (e) => setProjectName(e.target.value);
-    const closeDialog = () => setShow(false);
+    const closeDialog = () => {
+        setProjects([]);
+        setProjectName('');
+        setProjectColor('#b8b8b8');
+        setShow(false);
+    };
     const toggleAddProject = () => setShow(!show);
 
     return (
@@ -74,7 +80,7 @@ const AddProject = ({ shouldShow = false }) => {
 
                 <Label>
                     Project color
-                    <ColorPicker onChange={setProjectColor} />
+                    <ColorPicker onChange={setProjectColor} value={projectColor} />
                 </Label>
 
                 <ModalActions>

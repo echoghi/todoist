@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Listbox, ListboxOption } from '@reach/listbox';
+import { FaCheck } from 'react-icons/fa';
 
 export const Container = styled.div`
     padding: 10px 0 5px 11px;
@@ -21,6 +22,7 @@ export const Label = styled.label`
     font-weight: 700;
     display: block;
     margin-bottom: 7px;
+    position: relative;
 `;
 
 export const Button = styled.button`
@@ -125,11 +127,24 @@ export const ModalActions = styled.div`
     border-bottom-right-radius: 4px;
 `;
 
-export const ProjectColor = styled.div`
+export const ItemColor = styled.div`
     background: ${(props) => props.color};
-    height: 17px;
-    width: 17px;
-    margin-right: 7px;
+    height: 12px;
+    width: 12px;
+    margin: 0 1rem;
+    margin-left: 0.5rem;
+    border-radius: 50%;
+`;
+
+export const ProjectColor = styled.div`
+    position: absolute;
+    top: 49px;
+    left: 15px;
+    background: ${(props) => props.color};
+    height: 12px;
+    width: 12px;
+    margin: 0 1rem;
+    display: inline-block;
     border-radius: 50%;
 `;
 
@@ -137,6 +152,7 @@ export const ProjectColors = styled(Listbox)`
     margin-top: 10px;
     cursor: pointer;
     outline: none;
+    border-radius: 5px;
 
     [data-reach-listbox-button] {
         height: 30px;
@@ -145,6 +161,8 @@ export const ProjectColors = styled(Listbox)`
         border-radius: 5px;
         border: 1px solid #ddd;
         padding: 5px;
+        padding-left: 40px;
+        font-weight: normal;
     }
 
     [data-reach-listbox-arrow] {
@@ -154,13 +172,23 @@ export const ProjectColors = styled(Listbox)`
 
 export const ColorOption = styled(ListboxOption)`
     cursor: pointer;
+    position: relative;
     color: #202020;
     display: flex;
     align-items: center;
     font-size: 13px;
+    padding: 0.5rem;
 
     &:hover {
         background-color: #f9f9f9;
         color: #202020;
     }
+`;
+
+export const Checkmark = styled(FaCheck)`
+    position: absolute;
+    right: 10px;
+    display: ${(props) => (props.active ? 'block' : 'none')};
+    height: 10px;
+    width: 10px;
 `;

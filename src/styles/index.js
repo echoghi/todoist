@@ -16,6 +16,7 @@ export const Label = styled.label`
     font-weight: 700;
     display: block;
     margin-bottom: 7px;
+    position: relative;
 `;
 
 export const Button = styled.button`

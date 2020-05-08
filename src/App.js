@@ -45,6 +45,13 @@ const GlobalStyle = createGlobalStyle`
 
     [data-reach-listbox-popover] {
         z-index: 99999;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    [data-reach-listbox-option][data-current] {
+        background: #f9f9f9;
+        font-weight: normal
     }
 `;
 

@@ -4,13 +4,11 @@ import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 
 import Firebase from '../../firebase';
-import { colorFactory } from '../../helpers';
 import { CancelButton, AddButton, ModalActions } from '../../styles';
 import { useSelectedProjectValue, useProjectsValue } from '../../context';
 import { ProjectAction, SidebarDot, ProjectName, ProjectDelete, ModalContent } from './styles';
 
 const Project = ({ project }) => {
-    const color = colorFactory();
     const [showConfirm, setShowConfirm] = useState(false);
     const { projects, setProjects } = useProjectsValue();
     const { setSelectedProject } = useSelectedProjectValue();
@@ -29,7 +27,7 @@ const Project = ({ project }) => {
 
     return (
         <>
-            <SidebarDot color={project.color || color} />
+            <SidebarDot color={project.color} />
             <ProjectName>{project.name}</ProjectName>
             <ProjectDelete id="delete" data-testid="delete-project" onClick={toggleConfirm}>
                 <FaTrashAlt />
