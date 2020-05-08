@@ -5,9 +5,6 @@ import { createGlobalStyle } from 'styled-components';
 import { SelectedProjectProvider, ProjectsProvider } from './context';
 
 const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
-
-    // General Settings
     html {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
