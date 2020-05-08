@@ -66,7 +66,7 @@ const SideBar = () => {
             </List>
 
             <Middle onClick={() => setShowProjects(!showProjects)}>
-                <CaretIcon active={showProjects} />
+                <CaretIcon active={showProjects ? `${showProjects}` : null} />
 
                 <h2>Projects</h2>
                 <AddProjectButton />

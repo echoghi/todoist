@@ -24,6 +24,7 @@ const Project = ({ project }) => {
     };
     const closeDialog = () => setShowConfirm(false);
     const toggleConfirm = () => setShowConfirm(!showConfirm);
+    const labelId = `label__${project.name}--${project.color}`;
 
     return (
         <>
@@ -33,9 +34,13 @@ const Project = ({ project }) => {
                 <FaTrashAlt />
             </ProjectDelete>
 
-            <Dialog isOpen={showConfirm} onDismiss={closeDialog}>
-                <ModalContent>
-                    <p>Are you sure you want to delete this project?</p>
+            <Dialog
+                isOpen={showConfirm}
+                onDismiss={closeDialog}
+                aria-label="Confirmation about deleting this project"
+            >
+                <ModalContent aria-labelledby={labelId}>
+                    <p id={labelId}>Are you sure you want to delete this project?</p>
                 </ModalContent>
                 <ModalActions>
                     <CancelButton type="button" onClick={closeDialog}>

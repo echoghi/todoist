@@ -13,7 +13,7 @@ const ColorPicker = ({ onChange, value }) => {
                         <ColorOption value={color.code} key={color.name}>
                             <ItemColor color={color.code} />
                             {color.name}
-                            <Checkmark active={color.code === value} />
+                            <Checkmark active={color.code === value ? 'true' : null} />
                         </ColorOption>
                     );
                 })}

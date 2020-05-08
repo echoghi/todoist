@@ -63,7 +63,7 @@ const AddProject = ({ shouldShow = false }) => {
                 <span data-testid="add-project-action">Add Project</span>
             </ActionContainer>
 
-            <Dialog isOpen={show} onDismiss={closeDialog}>
+            <Dialog isOpen={show} onDismiss={closeDialog} aria-label="Form to add a project">
                 <ModalHeader>
                     <h1>Add project</h1>
                 </ModalHeader>
