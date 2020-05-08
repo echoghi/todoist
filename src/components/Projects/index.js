@@ -24,25 +24,23 @@ const Project = ({ project }) => {
                 setSelectedProject('INBOX');
             });
     };
+    const closeDialog = () => setShowConfirm(false);
+    const toggleConfirm = () => setShowConfirm(!showConfirm);
 
     return (
         <>
             <SidebarDot color={project.color || color} />
             <ProjectName>{project.name}</ProjectName>
-            <ProjectDelete
-                id="delete"
-                data-testid="delete-project"
-                onClick={() => setShowConfirm(!showConfirm)}
-            >
+            <ProjectDelete id="delete" data-testid="delete-project" onClick={toggleConfirm}>
                 <FaTrashAlt />
             </ProjectDelete>
 
-            <Dialog isOpen={showConfirm} onDismiss={() => setShowConfirm(false)}>
+            <Dialog isOpen={showConfirm} onDismiss={closeDialog}>
                 <ModalContent>
                     <p>Are you sure you want to delete this project?</p>
                 </ModalContent>
                 <ModalActions>
-                    <CancelButton type="button" onClick={() => setShowConfirm(false)}>
+                    <CancelButton type="button" onClick={closeDialog}>
                         Cancel
                     </CancelButton>
                     <AddButton type="button" onClick={() => deleteProject(project.docId)}>

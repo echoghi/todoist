@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
     [data-reach-dialog-overlay] {
         z-index: 9999
     }
+
+    [data-reach-listbox-popover] {
+        z-index: 99999;
+    }
 `;
 
 function App({ darkModeDefault = false }) {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useProjectsValue } from '../../context';
 import Firebase from '../../firebase';
-import { generatePushId, colorFactory } from '../../helpers';
+import { generatePushId } from '../../helpers';
 import {
     AddButton,
     Input,
@@ -15,25 +15,28 @@ import {
 } from './styles';
 import { FaPlus } from 'react-icons/fa';
 import { Dialog } from '@reach/dialog';
+import '@reach/listbox/styles.css';
 import '@reach/dialog/styles.css';
+import ColorPicker from './ColorPicker';
 
 const AddProject = ({ shouldShow = false }) => {
     const [show, setShow] = useState(shouldShow);
     const [projectName, setProjectName] = useState('');
-
+    const [projectColor, setProjectColor] = useState('Grey');
     const projectId = generatePushId();
 
     const { setProjects } = useProjectsValue();
 
     const addProject = () =>
         projectName &&
+        projectColor &&
         Firebase.firestore
             .collection('projects')
             .add({
                 projectId,
                 name: projectName,
                 userId: '33',
-                color: colorFactory(),
+                color: projectColor,
             })
             .then(() => {
                 setProjects([]);
@@ -41,41 +44,50 @@ const AddProject = ({ shouldShow = false }) => {
                 setShow(false);
             });
 
+    const handleProjectName = (e) => setProjectName(e.target.value);
+    const closeDialog = () => setShow(false);
+    const toggleAddProject = () => setShow(!show);
+
     return (
         <Container data-testid="add-project">
-            <ActionContainer onClick={() => setShow(!show)}>
+            <ActionContainer onClick={toggleAddProject}>
                 <AddIcon data-testid="add-project-plus">
                     <FaPlus />
                 </AddIcon>
                 <span data-testid="add-project-action">Add Project</span>
             </ActionContainer>
 
-            <Dialog isOpen={show} onDismiss={() => setShow(false)}>
+            <Dialog isOpen={show} onDismiss={closeDialog}>
                 <ModalHeader>
                     <h1>Add project</h1>
                 </ModalHeader>
 
                 <Label>
-                    Project Name
+                    Project name
                     <Input
                         type="text"
                         value={projectName}
-                        onChange={(e) => setProjectName(e.target.value)}
+                        onChange={handleProjectName}
                         data-testid="project-name"
                     />
                 </Label>
 
+                <Label>
+                    Project color
+                    <ColorPicker onChange={setProjectColor} />
+                </Label>
+
                 <ModalActions>
-                    <CancelButton onClick={() => setShow(false)} data-testid="hide-project-overlay">
+                    <CancelButton onClick={closeDialog} data-testid="hide-project-overlay">
                         Cancel
                     </CancelButton>
                     <AddButton
                         type="button"
                         onClick={addProject}
                         data-testid="add-project-submit"
-                        disabled={!projectName}
+                        disabled={!projectName || !projectColor}
                     >
-                        Add Project
+                        Add
                     </AddButton>
                 </ModalActions>
             </Dialog>

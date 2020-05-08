@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Listbox, ListboxOption } from '@reach/listbox';
 
 export const Container = styled.div`
     padding: 10px 0 5px 11px;
@@ -122,4 +123,44 @@ export const ModalActions = styled.div`
     border-top: 1px solid #ddd;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+`;
+
+export const ProjectColor = styled.div`
+    background: ${(props) => props.color};
+    height: 17px;
+    width: 17px;
+    margin-right: 7px;
+    border-radius: 50%;
+`;
+
+export const ProjectColors = styled(Listbox)`
+    margin-top: 10px;
+    cursor: pointer;
+    outline: none;
+
+    [data-reach-listbox-button] {
+        height: 30px;
+        width: 100%;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    [data-reach-listbox-arrow] {
+        display: none;
+    }
+`;
+
+export const ColorOption = styled(ListboxOption)`
+    cursor: pointer;
+    color: #202020;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+
+    &:hover {
+        background-color: #f9f9f9;
+        color: #202020;
+    }
 `;
