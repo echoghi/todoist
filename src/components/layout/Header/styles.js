@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.header`
     box-sizing: border-box;
     height: 44px;
-    background-color: ${(props) => (props.darkMode ? '#000' : '#db4c3f')};
+    background-color: ${(props) => (props.darkMode ? '#282828' : '#db4c3f')};
     color: #fff;
     top: 0;
     position: fixed;
@@ -16,6 +16,7 @@ export const Container = styled.header`
     transition: height 0.2s ease-in;
     padding-left: 42px;
     padding-right: 42px;
+    box-shadow: ${(props) => (props.darkMode ? '0 1px 3px 0 rgba(0,0,0,.15)' : 'none')};
 
     nav {
         display: flex;

@@ -12,19 +12,21 @@ import {
     ProjectsList,
     AddProjectButton,
 } from './styles';
-import { useSelectedProjectValue } from '../../../context';
+import { useSelectedProjectValue, useDarkMode } from '../../../context';
 import Projects from '../../Projects';
 import AddProject from '../../AddProject';
 
 const SideBar = () => {
+    const { darkMode } = useDarkMode();
     const { setSelectedProject } = useSelectedProjectValue();
     const [active, setActive] = useState('inbox');
     const [showProjects, setShowProjects] = useState(true);
 
     return (
-        <Bar data-testid="sidebar">
-            <List>
+        <Bar data-testid="sidebar" darkMode={darkMode}>
+            <List darkMode={darkMode}>
                 <Item
+                    darkMode={darkMode}
                     active={active === 'inbox'}
                     data-testid="inbox"
                     onClick={() => {
@@ -38,6 +40,7 @@ const SideBar = () => {
                     <span>Inbox</span>
                 </Item>
                 <Item
+                    darkMode={darkMode}
                     active={active === 'today'}
                     data-testid="today"
                     onClick={() => {
@@ -51,6 +54,7 @@ const SideBar = () => {
                     <span>Today</span>
                 </Item>
                 <Item
+                    darkMode={darkMode}
                     active={active === 'next_7'}
                     data-testid="next_7"
                     onClick={() => {
@@ -65,7 +69,7 @@ const SideBar = () => {
                 </Item>
             </List>
 
-            <Middle onClick={() => setShowProjects(!showProjects)}>
+            <Middle onClick={() => setShowProjects(!showProjects)} darkMode={darkMode}>
                 <CaretIcon active={showProjects ? `${showProjects}` : null} />
 
                 <h2>Projects</h2>

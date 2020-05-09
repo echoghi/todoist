@@ -10,6 +10,10 @@ export const ProjectAction = styled.li`
     &:hover span:nth-child(3) {
         opacity: 0.6;
     }
+
+    &:hover {
+        background: ${(props) => (props.darkMode ? '#363636' : 'inherit')};
+    }
 `;
 
 export const SidebarDot = styled.span`

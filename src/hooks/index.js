@@ -75,13 +75,3 @@ export const useProjects = () => {
 
     return { projects, setProjects };
 };
-
-export const useTheme = () => {
-    return {
-        boxShadow: 'rgba (0, 0, 0, .1) 0 0 0 1px, rgba (0, 0, 0, .1) 0 0 4px 11px',
-        border: '1px solid #f1f1f1',
-        colors: {
-            background: '#db4c3f',
-        },
-    };
-};

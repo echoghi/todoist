@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './components/layout/Header';
 import Content from './components/layout/Content';
 import { createGlobalStyle } from 'styled-components';
-import { SelectedProjectProvider, ProjectsProvider } from './context';
+import {
+    SelectedProjectProvider,
+    ProjectsProvider,
+    DarkModeProvider,
+    useDarkMode,
+} from './context';
+import { theme } from './constants';
 
 const GlobalStyle = createGlobalStyle`
     html {
@@ -19,7 +25,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         line-height: 1;
         font-family: 'Roboto', sans-serif;
-        color: #202020;
+        color: ${(props) =>
+            props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary};
         font-smooth: always;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -52,19 +59,26 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-function App({ darkModeDefault = false }) {
-    const [darkMode, setDarkMode] = useState(darkModeDefault);
-
+const AppContent = () => {
+    const { darkMode } = useDarkMode();
     return (
-        <SelectedProjectProvider>
-            <ProjectsProvider>
-                <main className={darkMode ? 'darkmode' : undefined} data-testid="application">
-                    <GlobalStyle />
-                    <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-                    <Content />
-                </main>
-            </ProjectsProvider>
-        </SelectedProjectProvider>
+        <main data-testid="application">
+            <GlobalStyle darkMode={darkMode} />
+            <Header />
+            <Content />
+        </main>
+    );
+};
+
+function App() {
+    return (
+        <DarkModeProvider>
+            <SelectedProjectProvider>
+                <ProjectsProvider>
+                    <AppContent />
+                </ProjectsProvider>
+            </SelectedProjectProvider>
+        </DarkModeProvider>
     );
 }
 

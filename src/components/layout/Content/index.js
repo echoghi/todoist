@@ -9,11 +9,13 @@ const Section = styled.section`
     grid-template-columns 1fr auto;
 `;
 
-const Content = () => (
-    <Section>
-        <SideBar />
-        <Tasks />
-    </Section>
-);
+const Content = () => {
+    return (
+        <Section>
+            <SideBar />
+            <Tasks />
+        </Section>
+    );
+};
 
 export default Content;

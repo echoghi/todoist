@@ -86,3 +86,16 @@ export const projectColors = [
         code: '#ccac93',
     },
 ];
+
+export const theme = {
+    boxShadow: 'rgba (0, 0, 0, .1) 0 0 0 1px, rgba (0, 0, 0, .1) 0 0 4px 11px',
+    colors: {
+        red: '#db4c3f',
+        textPrimary: '#333',
+        darkTextPrimary: 'hsla(0,0%,100%,.87)',
+        darkModeBorder: 'hsla(0,0%,100%,.1)',
+        border: '#f0f0f0',
+        bgDark: '#282828',
+        sideBarBg: '#fafafa',
+    },
+};

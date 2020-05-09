@@ -5,7 +5,7 @@ import '@reach/dialog/styles.css';
 
 import Firebase from '../../firebase';
 import { CancelButton, AddButton, ModalActions } from '../../styles';
-import { useSelectedProjectValue, useProjectsValue } from '../../context';
+import { useSelectedProjectValue, useProjectsValue, useDarkMode } from '../../context';
 import { ProjectAction, SidebarDot, ProjectName, ProjectDelete, ModalContent } from './styles';
 
 const Project = ({ project }) => {
@@ -57,7 +57,7 @@ const Project = ({ project }) => {
 
 const Projects = ({ activeValue = null }) => {
     const [active, setActive] = useState(activeValue);
-
+    const { darkMode } = useDarkMode();
     const { setSelectedProject } = useSelectedProjectValue();
     const { projects } = useProjectsValue();
 
@@ -65,6 +65,7 @@ const Projects = ({ activeValue = null }) => {
         projects &&
         projects.map((project) => (
             <ProjectAction
+                darkMode={darkMode}
                 active={active === project.projectId}
                 key={project.projectId}
                 data-doc-id={project.docId}

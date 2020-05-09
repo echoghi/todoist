@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { theme } from '../../constants';
 
 export const TasksList = styled.ul``;
 
 export const Container = styled.div`
     width: calc(100% - 305px);
-    background: #fff;
+    background: ${(props) => (props.darkMode ? '#1f1f1f' : '#fff')};
+    color: ${(props) => (props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary)};
     min-height: calc(100vh);
     vertical-align: top;
     padding: 80px 40px 84px 40px;
@@ -15,9 +17,10 @@ export const Container = styled.div`
 export const Task = styled.li`
     display: flex;
     line-height: 18px;
-    color: #333;
+    color: ${(props) => (props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary)};
     padding: 10px;
     font-size: 14px;
     list-style-type: none;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid
+        ${(props) => (props.darkMode ? theme.colors.darkModeBorder : theme.colors.border)};
 `;

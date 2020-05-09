@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Container, Logo, Settings, List, Item } from './styles';
 import { FaPizzaSlice, FaPlus } from 'react-icons/fa';
 import AddTask from '../../AddTask';
+import { useDarkMode } from '../../../context';
 
-const Header = ({ darkMode, setDarkMode }) => {
+const Header = () => {
     const [shouldShowMain, setShowMain] = useState(false);
     const [showQuickAddTask, setShowQuickAddTask] = useState(false);
-
+    const { darkMode, setDarkMode } = useDarkMode();
     const handleDarkMode = () => setDarkMode(!darkMode);
 
     const handleQuickAdd = () => {

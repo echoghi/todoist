@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FaChevronDown, FaPlus } from 'react-icons/fa';
+import { theme } from '../../../constants';
 
 export const Bar = styled.div`
     box-sizing: border-box;
@@ -14,7 +15,7 @@ export const Bar = styled.div`
     transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #fafafa;
+    background-color: ${(props) => (props.darkMode ? theme.colors.bgDark : theme.colors.sideBarBg)};
     z-index: 199;
 
     &:nth-child(3) {
@@ -63,7 +64,6 @@ export const CaretIcon = styled(FaChevronDown)`
 export const Item = styled.li`
     min-height: 24px;
     font-size: 14px;
-    color: #333;
     list-style: none;
     cursor: pointer;
     padding: 5px 16px 5px 5px;
@@ -74,22 +74,23 @@ export const Item = styled.li`
     align-items: center;
 
     &:hover {
-        background: #fff;
+        background: ${(props) => (props.darkMode ? '#363636' : '#fff')};
     }
 `;
 
 export const Middle = styled.div`
     display: flex;
     align-items: center;
-    color: #333;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid;
+    border-color: ${(props) =>
+        props.darkMode ? theme.colors.darkModeBorder : theme.colors.border};
 
     h2 {
         font-size: 14px;
     }
 
     &:hover {
-        background: #f7f7f7;
+        background: ${(props) => (props.darkMode ? 'inherit' : '#f7f7f7')};
         cursor: pointer;
     }
 `;
