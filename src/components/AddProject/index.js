@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useProjectsValue, useDarkMode } from '../../context';
 import Firebase from '../../firebase';
 import { generatePushId } from '../../helpers';
-import { AddButton, AddIcon, Container, ActionContainer, CancelButton } from './styles';
+import { AddButton, AddIcon, Container, ActionContainer } from './styles';
 import { FaPlus } from 'react-icons/fa';
 import { Dialog } from '@reach/dialog';
 import '@reach/listbox/styles.css';
 import '@reach/dialog/styles.css';
 import ColorPicker from './ColorPicker';
-import { ModalActions, ModalHeader, Input, Label } from '../../styles';
+import { ModalActions, ModalHeader, Input, Label, CancelButton } from '../../styles';
 
 const AddProject = ({ shouldShow = false }) => {
     const { darkMode } = useDarkMode();
@@ -77,7 +77,11 @@ const AddProject = ({ shouldShow = false }) => {
                 </Label>
 
                 <ModalActions darkMode={darkMode}>
-                    <CancelButton onClick={closeDialog} data-testid="hide-project-overlay">
+                    <CancelButton
+                        onClick={closeDialog}
+                        data-testid="hide-project-overlay"
+                        darkMode={darkMode}
+                    >
                         Cancel
                     </CancelButton>
                     <AddButton

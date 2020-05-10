@@ -162,6 +162,7 @@ const AddTask = ({
                         value={task}
                         onChange={(e) => setTask(e.target.value)}
                         placeholder="e.g. Renew gym every May 1st #Health"
+                        darkMode={darkMode}
                     />
                     <AddTaskButton type="button" data-testid="add-task" onClick={addTask}>
                         Add Task

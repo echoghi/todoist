@@ -1,9 +1,12 @@
 import React from 'react';
-import { Container, ListItem, TaskDateList, IconContainer } from './styles';
+import { Container, TaskDateList, IconContainer } from './styles';
+import { ListItem } from '../../styles';
 import moment from 'moment';
 import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
+import { useDarkMode } from '../../context';
 
 const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) => {
+    const { darkMode } = useDarkMode();
     const handleDateToday = () => {
         setShowTaskDate(false);
         setTaskDate(moment().format('DD/MM/YYYY'));
@@ -18,21 +21,33 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) => {
     };
     return (
         showTaskDate && (
-            <Container data-testid="task-date-overlay">
-                <TaskDateList>
-                    <ListItem onClick={handleDateToday} data-testid="task-date-today">
+            <Container data-testid="task-date-overlay" darkMode={darkMode}>
+                <TaskDateList darkMode={darkMode}>
+                    <ListItem
+                        onClick={handleDateToday}
+                        data-testid="task-date-today"
+                        darkMode={darkMode}
+                    >
                         <IconContainer>
                             <FaSpaceShuttle />
                         </IconContainer>
                         <span>Today</span>
                     </ListItem>
-                    <ListItem data-testid="task-date-tomorrow" onClick={handleDateTomorrow}>
+                    <ListItem
+                        data-testid="task-date-tomorrow"
+                        onClick={handleDateTomorrow}
+                        darkMode={darkMode}
+                    >
                         <IconContainer>
                             <FaSun />
                         </IconContainer>
                         <span>Tomorrow</span>
                     </ListItem>
-                    <ListItem data-testid="task-date-next-week" onClick={handleDateNextWeek}>
+                    <ListItem
+                        data-testid="task-date-next-week"
+                        onClick={handleDateNextWeek}
+                        darkMode={darkMode}
+                    >
                         <IconContainer>
                             <FaRegPaperPlane />
                         </IconContainer>

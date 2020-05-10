@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../constants';
 
 export const ProjectList = styled.ul`
     list-style: none;
@@ -8,19 +9,27 @@ export const ProjectList = styled.ul`
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 0;
-`;
+    background-color: ${(props) => (props.darkMode ? theme.colors.bgDark : '#fff')};
 
-export const ListItem = styled.li`
-    font-size: 13px;
-    color: #202020;
-    cursor: pointer;
-    padding: 4px 0;
-    margin: 0 10px;
-    display: flex;
-    align-items: center;
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
 
-    &:hover {
-        background-color: #f9f9f9;
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: ${(props) => (props.darkMode ? '#171717' : 'inherit')};
+        border-radius: 1rem;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
+        width: 15px;
+        border-radius: 1rem;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
     }
 `;
 
@@ -34,7 +43,7 @@ export const Color = styled.div`
 `;
 
 export const Container = styled.div`
-    background-color: #fff;
+    background-color: ${(props) => (props.darkMode ? theme.colors.bgDark : '#fff')};
     width: 275px;
     bottom: -54px;
     z-index: 99999;
@@ -43,8 +52,7 @@ export const Container = styled.div`
     min-height: inherit;
     padding: 0;
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: ${(props) => (props.darkMode ? 'none' : '1px solid rgba(0, 0, 0, 0.1)')};
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
     outline: none;
-    background: #fff;
 `;

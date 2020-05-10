@@ -25,14 +25,19 @@ export const Label = styled.label`
 export const Button = styled.button`
     font-weight: 700;
     font-size: 13px;
-    background: #f3f3f3;
-    border: 1px solid #ddd;
+    background: ${(props) => (props.darkMode ? '#353535' : '#f3f3f3')};
+    border: ${(props) => (props.darkMode ? 'none' : '1px solid #ddd')};
     border-radius: 3px;
-    color: ${theme.colors.textPrimary};
+    color: ${(props) => (props.darkMode ? '#eee' : theme.colors.textPrimary)};
     padding: 6px 12px 7px;
     cursor: pointer;
     outline: none;
     border-radius: 3px;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+        box-shadow: ${(props) => (props.darkMode ? '0 1px 2px rgba(0, 0, 0, 0.15)' : 'none')};
+    }
 
     &:disabled {
         opacity: 0.3;
@@ -53,9 +58,7 @@ export const AddButton = styled(Button)`
 export const CancelButton = styled(Button)`
     line-height: 17px;
     text-decoration: none;
-    text-shadow: 0 1px 0 #fff;
     white-space: nowrap;
-    background: linear-gradient(linear, 0 40%, 0 70%, from(#f3f3f3), to(#f1f1f1));
     border-radius: 3px;
     text-decoration: none;
 `;
@@ -106,4 +109,18 @@ export const ModalActions = styled.footer`
     border-top: 1px solid ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+`;
+
+export const ListItem = styled.li`
+    font-size: 13px;
+    color: ${(props) => (props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary)};
+    cursor: pointer;
+    padding: 4px 0;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background-color: ${(props) => (props.darkMode ? '#363636' : '#f9f9f9')};
+    }
 `;

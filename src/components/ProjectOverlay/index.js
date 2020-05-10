@@ -1,19 +1,22 @@
 import React from 'react';
-import { useProjectsValue } from '../../context';
-import { ProjectList, Container, ListItem, Color } from './styles';
+import { useProjectsValue, useDarkMode } from '../../context';
+import { ProjectList, Container, Color } from './styles';
+import { ListItem } from '../../styles';
 
 const ProjectOverlay = ({ setProject, showProjectOverlay, setShowProjectOverlay }) => {
+    const { darkMode } = useDarkMode();
     const { projects } = useProjectsValue();
 
     return (
         projects &&
         showProjectOverlay && (
-            <Container>
-                <ProjectList>
+            <Container darkMode={darkMode}>
+                <ProjectList darkMode={darkMode}>
                     {projects.map((project) => (
                         <ListItem
                             key={project.projectId}
                             data-testid="project-overlay-action"
+                            darkMode={darkMode}
                             onClick={() => {
                                 setProject(project.projectId);
                                 setShowProjectOverlay(false);
