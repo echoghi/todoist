@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelectedProjectValue } from '../../context';
+import { useSelectedProjectValue, useDarkMode } from '../../context';
 import Firebase from '../../firebase';
 import moment from 'moment';
 import {
@@ -10,7 +10,7 @@ import {
     AddTaskMain,
     ModalContent,
     ModalClose,
-    ModalHeader,
+    CustomModalHeader,
 } from './styles';
 import { FaPlus, FaRegListAlt, FaRegCalendarAlt, FaTimes } from 'react-icons/fa';
 import { ActionContainer, AddIcon } from '../AddProject/styles';
@@ -26,6 +26,7 @@ const AddTask = ({
     showQuickAddTask,
     setShowQuickAddTask,
 }) => {
+    const { darkMode } = useDarkMode();
     const [task, setTask] = useState('');
     const [taskDate, setTaskDate] = useState('');
     const [project, setProject] = useState('');
@@ -89,13 +90,17 @@ const AddTask = ({
             )}
 
             {showQuickAddTask && (
-                <Dialog isOpen={showQuickAddTask} onDismiss={closeQuickAdd}>
-                    <ModalHeader>
+                <Dialog
+                    isOpen={showQuickAddTask}
+                    onDismiss={closeQuickAdd}
+                    aria-label="Form to add a task"
+                >
+                    <CustomModalHeader darkMode={darkMode}>
                         <h1>Quick Add Task</h1>
                         <ModalClose onClick={closeQuickAdd}>
                             <FaTimes />
                         </ModalClose>
-                    </ModalHeader>
+                    </CustomModalHeader>
 
                     <ModalContent>
                         <ProjectOverlay
@@ -115,6 +120,7 @@ const AddTask = ({
                             value={task}
                             onChange={(e) => setTask(e.target.value)}
                             placeholder="e.g. Renew gym every May 1st #Health"
+                            darkMode={darkMode}
                         />
                         <AddTaskButton type="button" data-testid="add-task" onClick={addQuickTask}>
                             Add Task

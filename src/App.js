@@ -62,13 +62,8 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${(props) => (props.darkMode ? theme.colors.bgDark : '#fff')};
     }
 
-    [data-reach-listbox-list] {
-
-    }
-
     [data-reach-listbox-popover] {
         background: ${(props) => (props.darkMode ? theme.colors.bgDark : '#fff')};
-outline: none;
 
         &::-webkit-scrollbar {
             width: 8px;

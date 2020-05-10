@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input, AddButton, CancelButton } from '../../styles';
+import { Input, AddButton, CancelButton, ModalHeader } from '../../styles';
 
 export const Container = styled.div`
     padding: 10px 0 5px 11px;
@@ -10,18 +10,6 @@ export const ModalClose = styled.div`
     right: 15px;
     top: 15px;
     cursor: pointer;
-`;
-
-export const ModalHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-
-    h1 {
-        color: #202020;
-        font-size: 13px;
-        padding: 15px 1rem 0;
-    }
 `;
 
 export const AddTaskMain = styled.div`
@@ -43,6 +31,14 @@ export const AddTaskMain = styled.div`
         svg {
             fill: grey;
         }
+    }
+`;
+
+export const CustomModalHeader = styled(ModalHeader)`
+    padding: 0.75rem 1rem;
+
+    h1 {
+        font-size: 13px;
     }
 `;
 

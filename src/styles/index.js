@@ -89,8 +89,6 @@ export const ModalHeader = styled.header`
     padding: 5px 24px;
     display: flex;
     align-items: center;
-    background-color: ${(props) =>
-        props.darkMode ? theme.colors.bgDarker : theme.colors.sideBarBg};
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom: 1px solid ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
