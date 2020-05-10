@@ -1,11 +1,14 @@
 import styled from 'styled-components';
+import { theme } from '../constants';
 
 export const Input = styled.input`
     display: block;
     margin-top: 10px;
     font-size: 14px;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    color: ${(props) => (props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary)};
+    border: 1px solid ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
+    background-color: ${(props) => (props.darkMode ? theme.colors.bgDarker : '#fff')};
     padding: 5px;
     width: 100%;
 `;
@@ -25,7 +28,7 @@ export const Button = styled.button`
     background: #f3f3f3;
     border: 1px solid #ddd;
     border-radius: 3px;
-    color: #202020;
+    color: ${theme.colors.textPrimary};
     padding: 6px 12px 7px;
     cursor: pointer;
     outline: none;
@@ -38,7 +41,7 @@ export const Button = styled.button`
 
 export const AddButton = styled(Button)`
     margin-left: 7px;
-    background-color: #db4c3f;
+    background-color: ${theme.colors.red};
     border: 1px solid transparent;
     color: #fff;
 
@@ -83,13 +86,14 @@ export const ActionContainer = styled.div`
 
 export const ModalHeader = styled.header`
     position: relative;
-    padding: 0 24px;
+    padding: 5px 24px;
     display: flex;
     align-items: center;
-    background-color: #fafafa;
+    background-color: ${(props) =>
+        props.darkMode ? theme.colors.bgDarker : theme.colors.sideBarBg};
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
 
     h1 {
         font-size: 16px;
@@ -101,7 +105,7 @@ export const ModalActions = styled.footer`
     justify-content: flex-end;
     padding: 12px 24px;
     background-color: inherit;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
 `;

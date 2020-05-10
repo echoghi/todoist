@@ -9,6 +9,7 @@ import { useSelectedProjectValue, useProjectsValue, useDarkMode } from '../../co
 import { ProjectAction, SidebarDot, ProjectName, ProjectDelete, ModalContent } from './styles';
 
 const Project = ({ project }) => {
+    const { darkMode } = useDarkMode();
     const [showConfirm, setShowConfirm] = useState(false);
     const { projects, setProjects } = useProjectsValue();
     const { setSelectedProject } = useSelectedProjectValue();
@@ -42,7 +43,7 @@ const Project = ({ project }) => {
                 <ModalContent aria-labelledby={labelId}>
                     <p id={labelId}>Are you sure you want to delete this project?</p>
                 </ModalContent>
-                <ModalActions>
+                <ModalActions darkMode={darkMode}>
                     <CancelButton type="button" onClick={closeDialog}>
                         Cancel
                     </CancelButton>

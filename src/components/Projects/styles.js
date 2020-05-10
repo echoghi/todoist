@@ -6,6 +6,7 @@ export const ProjectAction = styled.li`
     height: 35px;
     display: flex;
     align-items: center;
+    font-size: 14px;
 
     &:hover span:nth-child(3) {
         opacity: 0.6;

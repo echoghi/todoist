@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { useProjectsValue } from '../../context';
+import { useProjectsValue, useDarkMode } from '../../context';
 import Firebase from '../../firebase';
 import { generatePushId } from '../../helpers';
-import {
-    AddButton,
-    Input,
-    AddIcon,
-    Container,
-    ActionContainer,
-    ModalHeader,
-    Label,
-    ModalActions,
-    CancelButton,
-} from './styles';
+import { AddButton, AddIcon, Container, ActionContainer, CancelButton } from './styles';
 import { FaPlus } from 'react-icons/fa';
 import { Dialog } from '@reach/dialog';
 import '@reach/listbox/styles.css';
 import '@reach/dialog/styles.css';
 import ColorPicker from './ColorPicker';
+import { ModalActions, ModalHeader, Input, Label } from '../../styles';
 
 const AddProject = ({ shouldShow = false }) => {
+    const { darkMode } = useDarkMode();
     const [show, setShow] = useState(shouldShow);
     const [projectName, setProjectName] = useState('');
     const [projectColor, setProjectColor] = useState('#b8b8b8');
@@ -64,7 +56,7 @@ const AddProject = ({ shouldShow = false }) => {
             </ActionContainer>
 
             <Dialog isOpen={show} onDismiss={closeDialog} aria-label="Form to add a project">
-                <ModalHeader>
+                <ModalHeader darkMode={darkMode}>
                     <h1>Add project</h1>
                 </ModalHeader>
 
@@ -75,6 +67,7 @@ const AddProject = ({ shouldShow = false }) => {
                         value={projectName}
                         onChange={handleProjectName}
                         data-testid="project-name"
+                        darkMode={darkMode}
                     />
                 </Label>
 
@@ -83,7 +76,7 @@ const AddProject = ({ shouldShow = false }) => {
                     <ColorPicker onChange={setProjectColor} value={projectColor} />
                 </Label>
 
-                <ModalActions>
+                <ModalActions darkMode={darkMode}>
                     <CancelButton onClick={closeDialog} data-testid="hide-project-overlay">
                         Cancel
                     </CancelButton>

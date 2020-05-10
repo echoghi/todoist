@@ -39,7 +39,6 @@ export const Icon = styled.div`
     margin-right: 5px;
     margin-top: -1px;
     font-size: 14px;
-    color: #555;
 `;
 
 export const AddProjectButton = styled(FaPlus)`
@@ -67,7 +66,7 @@ export const Item = styled.li`
     list-style: none;
     cursor: pointer;
     padding: 5px 16px 5px 5px;
-    transition: color 0.1s ease-in, background-color 0.1s ease-in;
+    transition: background-color 0.1s ease-in;
     line-height: 1.25;
     display: flex;
     border-radius: 3px;

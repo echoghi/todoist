@@ -92,10 +92,11 @@ export const theme = {
     colors: {
         red: '#db4c3f',
         textPrimary: '#333',
-        darkTextPrimary: 'hsla(0,0%,100%,.87)',
+        darkTextPrimary: '#eee',
         darkModeBorder: 'hsla(0,0%,100%,.1)',
         border: '#f0f0f0',
         bgDark: '#282828',
+        bgDarker: '#202020',
         sideBarBg: '#fafafa',
     },
 };

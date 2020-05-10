@@ -54,8 +54,42 @@ const GlobalStyle = createGlobalStyle`
     }
 
     [data-reach-listbox-option][data-current] {
-        background: #f9f9f9;
+        background: ${(props) => (props.darkMode ? '#363636' : '#f9f9f9')};
         font-weight: normal
+    }
+
+    [data-reach-dialog-content] {
+        background-color: ${(props) => (props.darkMode ? theme.colors.bgDark : '#fff')};
+    }
+
+    [data-reach-listbox-list] {
+
+    }
+
+    [data-reach-listbox-popover] {
+        background: ${(props) => (props.darkMode ? theme.colors.bgDark : '#fff')};
+outline: none;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: ${(props) => (props.darkMode ? '#171717' : 'inherit')};
+            border-radius: 1rem;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
+            width: 15px;
+            border-radius: 1rem;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+        }
     }
 `;
 

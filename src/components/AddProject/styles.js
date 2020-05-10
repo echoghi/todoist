@@ -1,28 +1,10 @@
 import styled from 'styled-components';
 import { Listbox, ListboxOption } from '@reach/listbox';
 import { FaCheck } from 'react-icons/fa';
+import { theme } from '../../constants';
 
 export const Container = styled.div`
     padding: 10px 0 5px 11px;
-`;
-
-export const Input = styled.input`
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 5px;
-    width: 100%;
-`;
-
-export const Label = styled.label`
-    padding: 1rem;
-    font-size: 14px;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 7px;
-    position: relative;
 `;
 
 export const Button = styled.button`
@@ -102,31 +84,6 @@ export const ActionContainer = styled.div`
     }
 `;
 
-export const ModalHeader = styled.header`
-    position: relative;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    background-color: #fafafa;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom: 1px solid #ddd;
-
-    h1 {
-        font-size: 16px;
-    }
-`;
-
-export const ModalActions = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    padding: 12px 24px;
-    background-color: inherit;
-    border-top: 1px solid #ddd;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-`;
-
 export const ItemColor = styled.div`
     background: ${(props) => props.color};
     height: 12px;
@@ -159,7 +116,8 @@ export const ProjectColors = styled(Listbox)`
         width: 100%;
         font-size: 14px;
         border-radius: 5px;
-        border: 1px solid #ddd;
+        border: 1px solid ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
+        background-color: ${(props) => (props.darkMode ? theme.colors.bgDarker : '#fff')};
         padding: 5px;
         padding-left: 40px;
         font-weight: normal;
@@ -173,15 +131,17 @@ export const ProjectColors = styled(Listbox)`
 export const ColorOption = styled(ListboxOption)`
     cursor: pointer;
     position: relative;
-    color: #202020;
+    color: ${(props) => (props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary)};
+    background-color: ${(props) => (props.darkMode ? theme.colors.bgDarker : '#fff')};
     display: flex;
     align-items: center;
     font-size: 13px;
     padding: 0.5rem;
 
     &:hover {
-        background-color: #f9f9f9;
-        color: #202020;
+        background-color: ${(props) => (props.darkMode ? '#363636' : '#f9f9f9')};
+        color: ${(props) =>
+            props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary};
     }
 `;
 
@@ -191,4 +151,5 @@ export const Checkmark = styled(FaCheck)`
     display: ${(props) => (props.active ? 'block' : 'none')};
     height: 10px;
     width: 10px;
+    fill: ${(props) => (props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary)};
 `;
