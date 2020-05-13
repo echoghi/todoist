@@ -45,6 +45,7 @@ const AddProject = ({ shouldShow = false }) => {
         setProjects([]);
         setProjectName('');
         setProjectColor('#b8b8b8');
+        setFavorite(false);
         setShow(false);
     };
     const toggleAddProject = () => setShow(!show);

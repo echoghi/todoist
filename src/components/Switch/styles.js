@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Label as BaseLabel } from '../../styles';
 
 export const Container = styled.div`
-    background-color: ${(props) => (props.checked ? '#dd4b39' : '#555')};
+    background-color: ${(props) => (props.checked ? '#dd4b39' : props.darkMode ? '#555' : '#aaa')};
     position: relative;
     display: inline-block;
     overflow: visible;

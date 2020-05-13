@@ -11,6 +11,11 @@ export const Input = styled.input`
     background-color: ${(props) => (props.darkMode ? theme.colors.bgDarker : '#fff')};
     padding: 5px;
     width: 100%;
+
+    &:focus {
+        border-color: ${(props) => (props.darkMode ? '#555' : 'grey')};
+        outline: none;
+    }
 `;
 
 export const Label = styled.label`
