@@ -12,19 +12,15 @@ import {
     ProjectsList,
     AddProjectButton,
 } from './styles';
-import { useSelectedProjectValue, useDarkMode, useProjectsValue } from '../../../context';
+import { useSelectedProjectValue, useDarkMode } from '../../../context';
 import Projects from '../../Projects';
 import AddProject from '../../AddProject';
 
 const SideBar = () => {
     const { darkMode } = useDarkMode();
     const { setSelectedProject } = useSelectedProjectValue();
-    const { projects } = useProjectsValue();
     const [active, setActive] = useState('inbox');
     const [showProjects, setShowProjects] = useState(true);
-
-    const favoriteProjects = projects.filter((project) => project.favorite);
-    console.log(favoriteProjects);
 
     return (
         <Bar data-testid="sidebar" darkMode={darkMode}>

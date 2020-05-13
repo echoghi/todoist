@@ -66,7 +66,13 @@ export const Item = styled.li`
     list-style: none;
     cursor: pointer;
     padding: 5px 16px 5px 5px;
-    transition: background-color 0.1s ease-in;
+    transition: color 0.1s ease-in, background-color 0.1s ease-in;
+    background: ${(props) =>
+        props.active && props.darkMode
+            ? '#363636'
+            : props.active && !props.darkMode
+            ? '#fff'
+            : 'inherit'};
     line-height: 1.25;
     display: flex;
     border-radius: 3px;
