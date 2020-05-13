@@ -7,6 +7,7 @@ export const ProjectAction = styled.li`
     display: flex;
     align-items: center;
     font-size: 14px;
+    border-radius: 3px;
 
     &:hover span:nth-child(3) {
         opacity: 0.6;

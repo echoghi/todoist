@@ -8,11 +8,13 @@ import { Dialog } from '@reach/dialog';
 import '@reach/listbox/styles.css';
 import '@reach/dialog/styles.css';
 import ColorPicker from './ColorPicker';
+import Switch from '../Switch';
 import { ModalActions, ModalHeader, Input, Label, CancelButton } from '../../styles';
 
 const AddProject = ({ shouldShow = false }) => {
     const { darkMode } = useDarkMode();
     const [show, setShow] = useState(shouldShow);
+    const [isFavorite, setFavorite] = useState(false);
     const [projectName, setProjectName] = useState('');
     const [projectColor, setProjectColor] = useState('#b8b8b8');
     const projectId = generatePushId();
@@ -29,6 +31,7 @@ const AddProject = ({ shouldShow = false }) => {
                 name: projectName,
                 userId: '33',
                 color: projectColor,
+                favorite: isFavorite,
             })
             .then(() => {
                 setProjects([]);
@@ -75,6 +78,14 @@ const AddProject = ({ shouldShow = false }) => {
                     Project color
                     <ColorPicker onChange={setProjectColor} value={projectColor} />
                 </Label>
+
+                <Switch
+                    name="is-favorite"
+                    dataTestId="project-favorite"
+                    label="Add to favorites"
+                    checked={isFavorite}
+                    onClick={() => setFavorite(!isFavorite)}
+                />
 
                 <ModalActions darkMode={darkMode}>
                     <CancelButton

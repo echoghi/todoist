@@ -14,11 +14,10 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
-    padding: 1rem;
+    padding: 1rem 24px;
     font-size: 14px;
     font-weight: 700;
     display: block;
-    margin-bottom: 7px;
     position: relative;
 `;
 
@@ -89,15 +88,17 @@ export const ActionContainer = styled.div`
 
 export const ModalHeader = styled.header`
     position: relative;
-    padding: 5px 24px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom: 1px solid ${(props) => (props.darkMode ? theme.colors.textPrimary : '#ddd')};
+    background: ${(props) => (props.darkMode ? theme.colors.bgDarker : '#fff')};
 
     h1 {
         font-size: 16px;
+        margin: 5px 0;
     }
 `;
 

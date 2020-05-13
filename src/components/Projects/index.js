@@ -8,7 +8,7 @@ import { CancelButton, AddButton, ModalActions } from '../../styles';
 import { useSelectedProjectValue, useProjectsValue, useDarkMode } from '../../context';
 import { ProjectAction, SidebarDot, ProjectName, ProjectDelete, ModalContent } from './styles';
 
-const Project = ({ project }) => {
+export const Project = ({ project }) => {
     const { darkMode } = useDarkMode();
     const [showConfirm, setShowConfirm] = useState(false);
     const { projects, setProjects } = useProjectsValue();
@@ -44,10 +44,14 @@ const Project = ({ project }) => {
                     <p id={labelId}>Are you sure you want to delete this project?</p>
                 </ModalContent>
                 <ModalActions darkMode={darkMode}>
-                    <CancelButton type="button" onClick={closeDialog}>
+                    <CancelButton type="button" onClick={closeDialog} darkMode={darkMode}>
                         Cancel
                     </CancelButton>
-                    <AddButton type="button" onClick={() => deleteProject(project.docId)}>
+                    <AddButton
+                        type="button"
+                        onClick={() => deleteProject(project.docId)}
+                        darkMode={darkMode}
+                    >
                         Delete
                     </AddButton>
                 </ModalActions>
@@ -56,15 +60,16 @@ const Project = ({ project }) => {
     );
 };
 
-const Projects = ({ activeValue = null }) => {
+const Projects = ({ activeValue = null, favorites = false }) => {
     const [active, setActive] = useState(activeValue);
     const { darkMode } = useDarkMode();
     const { setSelectedProject } = useSelectedProjectValue();
     const { projects } = useProjectsValue();
+    const projectsToShow = favorites ? projects.filter((project) => project.favorite) : projects;
 
     return (
-        projects &&
-        projects.map((project) => (
+        projectsToShow &&
+        projectsToShow.map((project) => (
             <ProjectAction
                 darkMode={darkMode}
                 active={active === project.projectId}
