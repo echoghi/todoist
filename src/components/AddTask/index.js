@@ -80,7 +80,7 @@ const AddTask = ({
     };
     return (
         <Container showQuickAdd={showQuickAddTask}>
-            {showAddTaskMain && !quickAdd && (
+            {showAddTaskMain && !quickAdd && !showMain && (
                 <ActionContainer onClick={() => setShowMain(!showMain)}>
                     <AddIcon data-testid="show-main-action">
                         <FaPlus />

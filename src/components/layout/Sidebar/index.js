@@ -32,6 +32,7 @@ const SideBar = () => {
                     onClick={() => {
                         setActive('inbox');
                         setSelectedProject('INBOX');
+                        document.title = `Inbox: Todoist`;
                     }}
                 >
                     <Icon>
@@ -46,6 +47,7 @@ const SideBar = () => {
                     onClick={() => {
                         setActive('today');
                         setSelectedProject('TODAY');
+                        document.title = `Today: Todoist`;
                     }}
                 >
                     <Icon>
@@ -60,6 +62,7 @@ const SideBar = () => {
                     onClick={() => {
                         setActive('next_7');
                         setSelectedProject('NEXT_7');
+                        document.title = `Upcoming: Todoist`;
                     }}
                 >
                     <Icon>

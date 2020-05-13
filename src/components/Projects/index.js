@@ -74,6 +74,7 @@ const Projects = ({ activeValue = null }) => {
                 onClick={() => {
                     setActive(project.projectId);
                     setSelectedProject(project.projectId);
+                    document.title = `${project.name}: Todoist`;
                 }}
             >
                 <Project project={project} />

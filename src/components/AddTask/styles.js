@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Input, AddButton, CancelButton, ModalHeader } from '../../styles';
 
 export const Container = styled.div`
-    padding: 10px 0 5px 11px;
+    padding: 5px 0;
 `;
 
 export const ModalClose = styled.div`
