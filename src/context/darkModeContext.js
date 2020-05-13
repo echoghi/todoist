@@ -5,7 +5,13 @@ const cookies = new Cookies();
 
 export const DarkModeContext = createContext();
 export const DarkModeProvider = ({ children }) => {
-    const darkModeSetting = JSON.parse(cookies.get('isDark'));
+    let darkModeSetting = false;
+
+    try {
+        darkModeSetting = JSON.parse(cookies.get('isDark'));
+    } catch (err) {
+        console.log(`Error caught: ${err}`);
+    }
 
     const [darkMode, toggleDarkMode] = useState(darkModeSetting);
 
