@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
             box-sizing: inherit;
     }
 
+    *:focus {
+        outline: none
+    }
+
     body {
         margin: 0;
         padding: 0;
@@ -64,6 +68,7 @@ const GlobalStyle = createGlobalStyle`
 
     [data-reach-listbox-popover] {
         background: ${(props) => (props.darkMode ? theme.colors.bgDark : '#fff')};
+        border-radius: 0 0 3px 3px;
 
         &::-webkit-scrollbar {
             width: 8px;
@@ -84,6 +89,11 @@ const GlobalStyle = createGlobalStyle`
 
         /* Handle on hover */
         &::-webkit-scrollbar-thumb:hover {
+        }
+
+        &:focus-within {
+            box-shadow: none;
+            outline: none
         }
     }
 `;
