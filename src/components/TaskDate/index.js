@@ -5,7 +5,7 @@ import moment from 'moment';
 import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
 import { useDarkMode } from '../../context';
 
-const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) => {
+const TaskDate = React.forwardRef(({ setTaskDate, showTaskDate, setShowTaskDate }, ref) => {
     const { darkMode } = useDarkMode();
     const handleDateToday = () => {
         setShowTaskDate(false);
@@ -21,7 +21,7 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) => {
     };
     return (
         showTaskDate && (
-            <Container data-testid="task-date-overlay" darkMode={darkMode}>
+            <Container data-testid="task-date-overlay" darkMode={darkMode} ref={ref}>
                 <TaskDateList darkMode={darkMode}>
                     <ListItem
                         onClick={handleDateToday}
@@ -57,6 +57,6 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) => {
             </Container>
         )
     );
-};
+});
 
 export default TaskDate;

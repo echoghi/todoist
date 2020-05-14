@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelectedProjectValue, useDarkMode } from '../../context';
 import Firebase from '../../firebase';
 import moment from 'moment';
@@ -18,6 +18,7 @@ import ProjectOverlay from '../ProjectOverlay';
 import TaskDate from '../TaskDate';
 import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
+import { useOnClickOutside } from '../../hooks';
 
 const AddTask = ({
     showAddTaskMain = true,
@@ -35,9 +36,17 @@ const AddTask = ({
     const [showTaskDate, setShowTaskDate] = useState(false);
     const { selectedProject } = useSelectedProjectValue();
 
+    const projectOverlayRef = useRef();
+    const dateOverlayRef = useRef();
+
     const handleOverlayClick = () => {
         setShowProjectOverlay(!showProjectOverlay);
     };
+
+    const handleDateClick = () => setShowTaskDate(!showTaskDate);
+
+    useOnClickOutside(projectOverlayRef, handleOverlayClick);
+    useOnClickOutside(dateOverlayRef, handleDateClick);
 
     const addTask = () => {
         const projectId = project || selectedProject;
@@ -146,12 +155,14 @@ const AddTask = ({
             {showMain && (
                 <AddTaskMain data-testid="add-task-main">
                     <ProjectOverlay
+                        ref={projectOverlayRef}
                         setProject={setProject}
                         showProjectOverlay={showProjectOverlay}
                         setShowProjectOverlay={setShowProjectOverlay}
                     />
 
                     <TaskDate
+                        ref={dateOverlayRef}
                         setTaskDate={setTaskDate}
                         showTaskDate={showTaskDate}
                         setShowTaskDate={setShowTaskDate}
@@ -164,7 +175,12 @@ const AddTask = ({
                         placeholder="e.g. Renew gym every May 1st #Health"
                         darkMode={darkMode}
                     />
-                    <AddTaskButton type="button" data-testid="add-task" onClick={addTask}>
+                    <AddTaskButton
+                        type="button"
+                        data-testid="add-task"
+                        onClick={addTask}
+                        disabled={!task}
+                    >
                         Add Task
                     </AddTaskButton>
 
@@ -188,7 +204,7 @@ const AddTask = ({
                     <span
                         id="show-task-date"
                         data-testid="show-task-date"
-                        onClick={() => setShowTaskDate(!showTaskDate)}
+                        onClick={handleDateClick}
                     >
                         <FaRegCalendarAlt />
                     </span>
