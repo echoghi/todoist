@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import moment from 'moment';
 import CheckBox from '../Checkbox';
 import { TasksList, Container, Task } from './styles';
 import { useTasks } from '../../hooks';
@@ -22,13 +23,18 @@ const Tasks = () => {
         projectName = getCollatedTitle(collatedTasks, selectedProject).name;
     }
 
+    const date = projectName === 'Today' ? moment().format('ddd MMM Do') : '';
+
     useEffect(() => {
         document.title = `${projectName}: Todoist`;
     }, []);
 
     return (
         <Container data-testid="tasks" darkMode={darkMode}>
-            <h2 data-testid="project-name">{projectName}</h2>
+            <h2 data-testid="project-name">
+                {projectName}
+                <small>{date}</small>
+            </h2>
 
             <TasksList>
                 {tasks.map((task) => (

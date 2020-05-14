@@ -9,9 +9,20 @@ export const Container = styled.div`
     color: ${(props) => (props.darkMode ? theme.colors.darkTextPrimary : theme.colors.textPrimary)};
     min-height: calc(100vh);
     vertical-align: top;
-    padding: 80px 40px 84px 40px;
+    padding: 80px 55px 84px 55px;
     transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     margin-left: 305px;
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h2 small {
+        color: grey;
+        margin-left: 6px;
+        font-size: 11px;
+        font-weight: 400;
+    }
 `;
 
 export const Task = styled.li`
