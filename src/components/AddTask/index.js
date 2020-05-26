@@ -18,7 +18,7 @@ import ProjectOverlay from '../ProjectOverlay';
 import TaskDate from '../TaskDate';
 import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
-import { useOnClickOutside } from '../../hooks';
+import { useOnClickOutside } from '@echoghi/hooks';
 
 const AddTask = ({
     showAddTaskMain = true,

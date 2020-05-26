@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { useLocalStorage } from '../hooks';
+import { useLocalStorage } from '@echoghi/hooks';
 
 export const DarkModeContext = createContext();
 export const DarkModeProvider = ({ children }) => {

@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@echoghi/hooks": "1.2.3",
         "@reach/dialog": "0.10.1",
         "@reach/listbox": "0.10.1",
         "@testing-library/jest-dom": "^4.2.4",
@@ -14,8 +15,7 @@
         "react-dom": "^16.13.1",
         "react-icons": "3.10.0",
         "react-scripts": "3.4.1",
-        "styled-components": "5.1.0",
-        "universal-cookie": "4.0.3"
+        "styled-components": "5.1.0"
     },
     "scripts": {
         "start": "react-scripts start",

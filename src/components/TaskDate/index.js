@@ -28,10 +28,13 @@ const TaskDate = React.forwardRef(({ setTaskDate, showTaskDate, setShowTaskDate 
                         data-testid="task-date-today"
                         darkMode={darkMode}
                     >
-                        <IconContainer>
-                            <FaSpaceShuttle />
-                        </IconContainer>
-                        <span>Today</span>
+                        <div>
+                            <IconContainer>
+                                <FaSpaceShuttle />
+                            </IconContainer>
+                            <span>Today</span>
+                        </div>
+                        <div>{moment().format('ddd')}</div>
                     </ListItem>
                     <ListItem
                         data-testid="task-date-tomorrow"
